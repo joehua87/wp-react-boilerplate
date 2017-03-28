@@ -1,5 +1,3 @@
-require( 'es6-promise' ).polyfill();
-
 var path = require( 'path' );
 var webpack = require( 'webpack' );
 var NODE_ENV = process.env.NODE_ENV || 'development';
@@ -17,7 +15,7 @@ var webpackConfig = {
 	},
 	output: {
 		path: path.join( __dirname, 'build' ),
-		filename: "[name].js"
+		filename: '[name].js'
 	},
 	devtool: '#source-map',
 	module: {
@@ -27,20 +25,23 @@ var webpackConfig = {
 			{
 				test: /\.jsx?$/,
 				exclude: /node_modules/,
-				loaders: [ 'babel-loader?cacheDirectory&optional[]=runtime' ]
+				loaders: [ 'babel-loader' ]
 			},
 			{
 				test: /\.scss$/,
-				loader: ExtractTextPlugin.extract( 'style-loader', 'css!sass' )
+				loader: ExtractTextPlugin.extract({
+					use: 'css-loader!sass-loader',
+					fallback: 'style-loader',
+				})
 			}
 		]
 	},
 	resolve: {
-		extensions: [ '', '.js', '.jsx' ],
-		modulesDirectories: [ 'node_modules', 'src' ]
+		extensions: [ '.js', '.jsx' ],
+		modules: [ 'node_modules', 'src' ]
 	},
 	node: {
-		fs: "empty",
+		fs: 'empty',
 		process: true
 	},
 

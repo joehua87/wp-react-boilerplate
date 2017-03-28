@@ -21,7 +21,7 @@ export default React.createClass({
 					<div className="wp-styleguide--buttons">
 						<h2>Buttons</h2>
 						<p>
-							<Button type="primary">Primary Button</Button>
+							<Button type="primary">Primary Button XXX</Button>
 						</p>
 						<p>
 							<Button type="secondary">Secondary Button</Button>
